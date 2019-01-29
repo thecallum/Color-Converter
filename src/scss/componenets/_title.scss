@@ -1,0 +1,30 @@
+.title {
+    font-weight: 100;
+    font-size: 6rem;
+    letter-spacing: 3rem;
+    text-align: center;
+    text-indent: 3rem;
+    text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+    .title {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 3rem;
+        letter-spacing: 2rem;
+        text-indent: 2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .title {
+        font-size: 2rem;
+        letter-spacing: 1.6rem;
+        text-indent: 1.6rem;
+    }
+}

@@ -1,0 +1,41 @@
+.button {
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 1rem;
+    font-weight: 100;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 32px;
+    color: white;
+    background-color: hsl(355, 70%, 40%);
+    font-family: 'Montserrat', sans-serif;
+
+    &:focus {
+        outline: none;
+    }
+
+    &.dark {
+        color: #000;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .button {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .button {
+        font-size: 3rem;
+        letter-spacing: .5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .button {
+        font-size: 2rem;
+    }
+}

@@ -1,3 +1,7 @@
-* {
-    background-color: orange;
-}
+@import './base/base';
+@import './base/fonts';
+
+@import './componenets/title';
+@import './componenets/controller';
+@import './componenets/button';
+@import './componenets/container';

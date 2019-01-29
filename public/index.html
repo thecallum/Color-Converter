@@ -7,13 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Esteban|Montserrat:300,400" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Color picker</h1>
+    <div id="app" class="app">
+        <div class="container" v-bind:style='{backgroundColor}'>
+            <h1 class="title">Color Converter </h1>
 
+            <div class="controller">
 
+                <div class="group">
+                    <label for="hex" class="label" v-bind:style='{backgroundColor: oppositeColor}' v-bind:class='{light: !backgroundIsDark}'>HEX</label>
+                    <input type="text" id="hex" v-model='input_hex' class="input" v-bind:class='{ light: backgroundIsDark}'>
+                </div>
 
+                <div class="group">
+                    <label for="rbg" class="label" v-bind:style='{backgroundColor: oppositeColor}' v-bind:class='{light: !backgroundIsDark}'>RBG</label>
+                    <input type="text" id="rbg" v-model='input_rgb' class="input" v-bind:class='{ light: backgroundIsDark}'>
+                </div>
+
+                <div class="group">
+                    <label for="hsl" class="label" v-bind:style='{backgroundColor: oppositeColor}' v-bind:class='{light: !backgroundIsDark}'>HSL</label>
+                    <input type="text" id="hsl" v-model='input_hsl' class="input" v-bind:class='{ light: backgroundIsDark}'>
+                </div>
+
+            </div>
+
+            <button class="button" @click='randomColor' v-bind:style='{backgroundColor: oppositeColor}' v-bind:class='{ dark: backgroundIsDark}'>Random</button>
+
+        </div>
+    </div>
 
     <script src="js/bundle.js"></script>
 </body>
