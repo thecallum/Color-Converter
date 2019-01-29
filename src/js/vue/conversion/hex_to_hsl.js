@@ -2,7 +2,7 @@ const hex_to_hsl = hex => {
     let hexVal = hex.substring(1, hex.length);
     if (hexVal.length === 3) hexVal = hexVal.split('').map(item => item.repeat(2)).join('');
 
-    let [r, g, b] = hexVal.match(/.{2}/g)
+    let [r, g, b] = hexVal.match(/.{2}/g).map(num => parseInt(num, 16));
 
     r /= 255, g /= 255, b /= 255;
     var max = Math.max(r, g, b), min = Math.min(r, g, b);

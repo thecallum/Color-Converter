@@ -6,7 +6,10 @@ const rgb_to_hex = rgb => {
     const g = result[5];
     const b = result[9];
 
-    const hexValues = [r, g, b].map(val => parseInt(val, 16));
+    const hexValues = [r, g, b].map(val => {
+        const result = Number(val).toString(16);
+        return result + '0'.repeat(2 - result.length);
+    });
     return `#${hexValues.join('')}`;
 }
 
