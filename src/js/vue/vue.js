@@ -77,8 +77,9 @@ module.exports = new Vue({
 
     methods: {
         hexIsDark(hex) {
-            const arr = hex.substring(1, hex.length).match(/.{2}/g).map(item => parseInt(item, 16)).filter(val => val >= 128);
-            return !arr.length;
+            const arr = hex.substring(1, hex.length).match(/.{2}/g).map(item => parseInt(item, 16)).filter(val => val <= 100);
+            // is dark if there are no 'light' values (above 128)
+            return arr.length;
         },
         randomColor() {
             const newHex = this.randomHexColor();
