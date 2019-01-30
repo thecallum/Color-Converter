@@ -79,7 +79,7 @@ module.exports = new Vue({
         hexIsDark(hex) {
             const arr = hex.substring(1, hex.length).match(/.{2}/g).map(item => parseInt(item, 16)).filter(val => val <= 100);
             // is dark if there are no 'light' values (above 128)
-            return arr.length;
+            return !!arr.length;
         },
         randomColor() {
             const newHex = this.randomHexColor();
@@ -93,6 +93,7 @@ module.exports = new Vue({
         },
         updateBackgroundColor: function (hex, origin) {
             this.backgroundColor = hex;
+            this.backgroundIsDark = this.hexIsDark(hex);
 
             if (origin !== 'hex') this.input_hex = hex;
             if (origin !== 'rgb') this.input_rgb = hex_to_rgb(hex);
