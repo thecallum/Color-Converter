@@ -18,19 +18,28 @@
 
             <div class="controller">
 
-                <div class="group">
+                <div class="group" v-bind:class='{error:input_hex_error}'>
                     <label for="hex" class="label" v-bind:style='{backgroundColor: oppositeColor}' v-bind:class='{light: !backgroundIsDark}'>HEX</label>
-                    <input type="text" id="hex" v-model='input_hex' class="input" v-bind:class='{ light: backgroundIsDark}'>
+                    <input type="text" id="hex" v-model='input_hex' class="input" v-bind:class='{ light: backgroundIsDark, error: input_hex_error}'>
+                    <div class="erroricon" v-bind:class='{show:input_hex_error}'>
+                        <img src="assets/baseline-error_outline-24px.svg" alt="error">
+                    </div>
                 </div>
 
-                <div class="group">
+                <div class="group" v-bind:class='{error:input_rgb_error}'>
                     <label for="rbg" class="label" v-bind:style='{backgroundColor: oppositeColor}' v-bind:class='{light: !backgroundIsDark}'>RBG</label>
-                    <input type="text" id="rbg" v-model='input_rgb' class="input" v-bind:class='{ light: backgroundIsDark}'>
+                    <input type="text" id="rbg" v-model='input_rgb' class="input" v-bind:class='{ light: backgroundIsDark, error: input_rgb_error}'>
+                    <div class="erroricon" v-bind:class='{show:input_rgb_error}'>
+                        <img src="assets/baseline-error_outline-24px.svg" alt="error">
+                    </div>
                 </div>
 
-                <div class="group">
+                <div class="group" v-bind:class='{error:input_hsl_error}'>
                     <label for="hsl" class="label" v-bind:style='{backgroundColor: oppositeColor}' v-bind:class='{light: !backgroundIsDark}'>HSL</label>
-                    <input type="text" id="hsl" v-model='input_hsl' class="input" v-bind:class='{ light: backgroundIsDark}'>
+                    <input type="text" id="hsl" v-model='input_hsl' class="input" v-bind:class='{ light: backgroundIsDark, error: input_hsl_error}'>
+                    <div class="erroricon" v-bind:class='{show:input_hsl_error}'>
+                        <img src="assets/baseline-error_outline-24px.svg" alt="error">
+                    </div>
                 </div>
 
             </div>
@@ -39,6 +48,7 @@
 
         </div>
     </div>
+
 
     <script src="js/bundle.js"></script>
 </body>

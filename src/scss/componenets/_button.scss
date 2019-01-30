@@ -7,8 +7,8 @@
     border: none;
     border-radius: 10px;
     padding: 10px 32px;
-    color: white;
-    background-color: hsl(355, 70%, 40%);
+    color: $white-primary;
+    background-color: $black-secondary;
     font-family: 'Montserrat', sans-serif;
 
     &:focus {
@@ -16,7 +16,7 @@
     }
 
     &.dark {
-        color: #000;
+        color: $black-primary;
     }
 }
 

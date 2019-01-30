@@ -12,7 +12,10 @@ module.exports = new Vue({
         input_hex: '',
         input_rgb: '',
         input_hsl: '',
-        input_cmyk: '',
+
+        input_hex_error: false,
+        input_rgb_error: false,
+        input_hsl_error: false,
 
         backgroundColor: '#fff',
         oppositeColor: '#000',
@@ -26,23 +29,48 @@ module.exports = new Vue({
     },
     watch: {
         input_hex(val) {
-            if (regex.hex.test(val) && !this.updating) {
-                this.updating = true;
-                this.updateBackgroundColor(val, 'hex');
+            if (!this.updating) {
+                if (regex.hex.test(val)) {
+                    this.input_hex_error = false;
+                    this.updating = true;
+                    this.updateBackgroundColor(val, 'hex');
+
+                    const oppositeHex = this.oppositeHexColor(val)
+                    this.updateOppositeColor(oppositeHex)
+
+                } else {
+                    this.input_hex_error = true;
+                }
             }
         },
         input_rgb(val) {
-            if (regex.rgb.test(val) && !this.updating) {
-                this.updating = true;
-                const hex = rgb_to_hex(val);
-                this.updateBackgroundColor(hex, 'rgb');
+            if (!this.updating) {
+                if (regex.rgb.test(val)) {
+                    this.input_rgb_error = false;
+                    this.updating = true;
+                    const hex = rgb_to_hex(val);
+                    this.updateBackgroundColor(hex, 'rgb');
+
+                    const oppositeHex = this.oppositeHexColor(hex)
+                    this.updateOppositeColor(oppositeHex)
+                } else {
+                    this.input_rgb_error = true;
+                }
             }
         },
         input_hsl(val) {
-            if (regex.hsl.test(val) && !this.updating) {
-                this.updating = true;
-                const hex = hsl_to_hex(val);
-                this.updateBackgroundColor(hex, 'hsl');
+            if (!this.updating) {
+                if (regex.hsl.test(val)) {
+                    this.input_hsl_error = false;
+                    this.updating = true;
+                    const hex = hsl_to_hex(val);
+                    this.updateBackgroundColor(hex, 'hsl');
+
+                    const oppositeHex = this.oppositeHexColor(hex)
+                    this.updateOppositeColor(oppositeHex)
+                } else {
+                    this.input_hsl_error = true;
+                }
             }
         }
     },
@@ -69,6 +97,12 @@ module.exports = new Vue({
             if (origin !== 'rgb') this.input_rgb = hex_to_rgb(hex);
             if (origin !== 'hsl') this.input_hsl = hex_to_hsl(hex);
 
+            // console.log('resetting errors')
+            this.input_hex_error = false;
+            this.input_rgb_error = false;
+            this.input_hsl_error = false;
+
+
             setTimeout(() => {
                 this.updating = false;
             }, 10);
@@ -79,7 +113,7 @@ module.exports = new Vue({
         randomHexColor() {
             const color = Array.apply(null, { length: 3 }).map(() => {
                 const hex = Math.floor(Math.random() * 255).toString(16);
-                return hex + '0'.repeat(2 - hex.length);
+                return hex + 'f'.repeat(2 - hex.length);
             }).join('');
 
             return `#${color}`;
