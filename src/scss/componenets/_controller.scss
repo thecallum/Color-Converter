@@ -19,8 +19,10 @@
             font-family: 'Montserrat', sans-serif;
             color: $black-primary;
             font-size: 2.4rem;
-            padding: 2px 4px;
+            padding: 2px 0;
             border-radius: 8px;
+            width: 70px;
+            text-align: center;
 
             &.light {
                 color: $white-secondary;
@@ -71,12 +73,11 @@
             align-items: center;
 
             > img {
-                display: none
+                // display: none;
             }
 
             &.show > img {
                 display: block;
-
             }
            
         }

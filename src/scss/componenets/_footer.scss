@@ -1,0 +1,23 @@
+.footer {
+    position: absolute;
+    font-size: 2rem;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Esteban', serif;
+    color: $black-primary;
+
+    > a {
+        color: $black-secondary;
+        text-decoration: none;
+    }
+
+    &.light {
+        color: $white-primary;
+
+        > a {
+            color: $white-secondary;
+        }
+    }
+}

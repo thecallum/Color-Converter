@@ -5,6 +5,11 @@
     text-align: center;
     text-indent: 3rem;
     text-transform: uppercase;
+
+
+    &.light {
+        color: $white-primary;
+    }
 }
 
 @media (max-width: 800px) {
