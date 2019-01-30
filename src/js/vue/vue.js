@@ -29,61 +29,88 @@ module.exports = new Vue({
     },
     watch: {
         input_hex(val) {
-            if (this.updating) return;
+            if (!this.updating) {
+                if (regex.hex.test(val)) {
+                    this.input_hex_error = false;
+                    this.updating = true;
+                    this.updateBackgroundColor(val, 'hex');
 
-            if (regex.hex.test(val)) this.updateColors('hex', val);
-            else this.input_hex_error = true;
+                    const oppositeHex = this.oppositeHexColor(val)
+                    this.updateOppositeColor(oppositeHex)
+
+                } else {
+                    this.input_hex_error = true;
+                }
+            }
         },
         input_rgb(val) {
-            if (this.updating) return;
+            if (!this.updating) {
+                if (regex.rgb.test(val)) {
+                    this.input_rgb_error = false;
+                    this.updating = true;
+                    const hex = rgb_to_hex(val);
+                    this.updateBackgroundColor(hex, 'rgb');
 
-            if (regex.rgb.test(val)) this.updateColors('rgb', rgb_to_hex(val));
-            else this.input_rgb_error = true;
+                    const oppositeHex = this.oppositeHexColor(hex)
+                    this.updateOppositeColor(oppositeHex)
+                } else {
+                    this.input_rgb_error = true;
+                }
+            }
         },
         input_hsl(val) {
-            if (this.updating) return;
+            if (!this.updating) {
+                if (regex.hsl.test(val)) {
+                    this.input_hsl_error = false;
+                    this.updating = true;
+                    const hex = hsl_to_hex(val);
+                    this.updateBackgroundColor(hex, 'hsl');
 
-            if (regex.hsl.test(val)) this.updateColors('hsl', hsl_to_hex(val));
-            else this.input_hsl_error = true;
+                    const oppositeHex = this.oppositeHexColor(hex)
+                    this.updateOppositeColor(oppositeHex)
+                } else {
+                    this.input_hsl_error = true;
+                }
+            }
         }
     },
 
     methods: {
-        updateColors(origin, hex) {
-            this.updating = true;
-
-            this.updateBackgroundColor(hex);
-            this.updateOppositeColor(hex);
-            this.updateInputs(hex, origin)
-        },
         hexIsDark(hex) {
             const arr = hex.substring(1, hex.length).match(/.{2}/g).map(item => parseInt(item, 16)).filter(val => val <= 100);
-            // is dark if there are no 'light' values (above 100)
+            // is dark if there are no 'light' values (above 128)
             return !!arr.length;
         },
         randomColor() {
-            this.updateColors(null, this.randomHexColor())
+            const newHex = this.randomHexColor();
+            const oppositeHex = this.oppositeHexColor(newHex)
+
+            this.updateBackgroundColor(newHex)
+            this.updateOppositeColor(oppositeHex)
+
+            this.backgroundIsDark = this.hexIsDark(newHex);
+
         },
-        updateBackgroundColor(hex) {
+        updateBackgroundColor: function (hex, origin) {
             this.backgroundColor = hex;
             this.backgroundIsDark = this.hexIsDark(hex);
-        },
-        updateInputs(hex, origin) {
+
             if (origin !== 'hex') this.input_hex = hex;
             if (origin !== 'rgb') this.input_rgb = hex_to_rgb(hex);
             if (origin !== 'hsl') this.input_hsl = hex_to_hsl(hex);
 
-            this.clearErrors();
-
-            setTimeout(() => { this.updating = false; }, 10);
-        },
-        clearErrors() {
+            // console.log('resetting errors')
             this.input_hex_error = false;
             this.input_rgb_error = false;
             this.input_hsl_error = false;
+
+
+            setTimeout(() => {
+                this.updating = false;
+            }, 10);
         },
         updateOppositeColor(hex) {
-            this.oppositeColor = hex.split('').map(item => item === '#' ? item : (15 - parseInt(item, 16)).toString(16)).join('');
+            this.oppositeColor = hex;
         },
         randomHexColor() {
             const color = Array.apply(null, { length: 3 }).map(() => {
@@ -92,6 +119,10 @@ module.exports = new Vue({
             }).join('');
 
             return `#${color}`;
+        },
+
+        oppositeHexColor(hex) {
+            return hex.split('').map(item => item === '#' ? item : (15 - parseInt(item, 16)).toString(16)).join('');
         }
     }
 })
