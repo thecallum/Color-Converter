@@ -6,6 +6,8 @@
     text-indent: 3rem;
     text-transform: uppercase;
 
+    animation-name: loadLeft;
+    animation-duration: 1s;
 
     &.light {
         color: $white-primary;

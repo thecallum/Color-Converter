@@ -1,0 +1,44 @@
+@keyframes loadLeft {
+    from {
+        transform: translate(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes loadRight {
+    from {
+        transform: translate(50%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes loadDown {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        // transform: translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        // transform: translateY(0%);
+        opacity: 1;
+    }
+}
+

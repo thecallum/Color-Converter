@@ -11,6 +11,16 @@
     background-color: $black-secondary;
     font-family: 'Montserrat', sans-serif;
 
+
+    animation-name: loadRight;
+    animation-duration: 1s;
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+
+    opacity: 0;
+
+    animation-fill-mode: forwards;
+
     &:focus {
         outline: none;
     }
