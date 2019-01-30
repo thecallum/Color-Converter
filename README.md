@@ -4,8 +4,6 @@ Color type converter build with Vue.js
 ## Table of contents
 * [About](#About)
 * [Installation](#Installation)
-* [Gallery](#Gallery)
-
 
 ### About
 In an attempt to improve my front-end design skills, I have decided to create a few projects to work on my skills.
@@ -28,5 +26,3 @@ Alternatively, you can build the project.
 yarn build
 ```
 Then access index.html however you want. I would suggest [Live Server](https://www.npmjs.com/package/live-server) for convenience.
-
-### Gallery
