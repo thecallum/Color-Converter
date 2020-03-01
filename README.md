@@ -1,15 +1,18 @@
 # Color Converter
-Color type converter build with Vue.js
+An app for converting colours into different formats with VueJS.
 
 ## Table of contents
 * [About](#About)
 * [Installation](#Installation)
 
 ### About
-In an attempt to improve my front-end design skills, I have decided to create a few projects to work on my skills.
-This website was probably too simple, I fill make something more advanced for my next project.
+To work on my front-end design skills, I created a few simple websites. This website was probably too simple, I fill make something more advanced for my next project.
 
-And yes, I know that I have spelled *colour* incorrectly. That is how it's spelled in CSS, I wanted to keep it consistent.
+This app helps you convert between different colour formats such as HEX, RGB and HSL. 
+
+While building this project, I learned about different colour formats and using CSS animations.
+
+The app also uses VueJS.
 
 ### Installation
 Initialize package manager
